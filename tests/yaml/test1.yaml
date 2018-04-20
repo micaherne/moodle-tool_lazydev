@@ -1,0 +1,35 @@
+entities:
+  block_strathsurveys:
+    persistent:
+      table_name: block_strathsurveys # example only, should be default
+    fields:
+      id:
+      name:
+        moodle_type: PARAM_TEXT
+        db_type: char
+        length: 255
+        nullable: false
+        sequence: false
+        comment: Survey name
+        choices:
+          - one
+          - two
+          - three
+      datestart:
+        moodle_type: PARAM_INT
+        db_type: int
+        length: 10
+        nullable: false
+        default: 0
+        sequence: false
+        comment: Some test thing
+        privacy: The date the user started the survey.
+  helper_component:
+    classname: tool_lazydev\local\helper
+    fields:
+      firstname:
+        moodle_type: PARAM_TEXT
+      lastname:
+        moodle_type: PARAM_TEXT
+      survey:
+        type: @block_strathsurveys[]

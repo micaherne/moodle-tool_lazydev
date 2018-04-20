@@ -1,41 +1,41 @@
 <?php
 
-use core\persistent;
-use tool_lazydev\local\xmldb_generator;
+use tool_lazydev\local\generator\xmldb_generator;
+use tool_lazydev\local\reader\yaml_model_reader;
 
 class tool_lazydev_xmldb_generator_testcase extends \advanced_testcase {
 
-    public function test_tabledef_for_persistent() {
-        $persistent1 = new class extends persistent {
+    public function test_constructor() {
+        $y = new yaml_model_reader(file_get_contents(__DIR__ . '/yaml/test1.yaml'));
+        $g = new xmldb_generator($y);
 
-            const TABLE = 'interesting_facts';
-
-            // From docs.
-            protected static function define_properties() {
-                return array(
-                    'userid' => array(
-                        'type' => PARAM_INT,
-                    ),
-                    'message' => array(
-                        'type' => PARAM_RAW,
-                    )
-                );
-            }
-        };
-
-        $gen = new xmldb_generator();
-        $def = $gen->tabledef_for_persistent($persistent1);
-        echo $def->xmlOutput();
-        $fields = $def->getFields();
-        $this->assertEquals('id', $fields[0]->getName(), 'id field should be first');
-        $this->assertNotEmpty($def->getField('timecreated'));
-        $this->assertEquals(XMLDB_TYPE_INTEGER, $def->getField('userid')->getType());
-
+        return $g;
     }
 
-    public function test_infer_column_details() {
-        $gen = new xmldb_generator();
-        $paramint = $gen->infer_column_details(PARAM_INT);
+    /**
+     * @depends test_constructor
+     * @param xmldb_generator $g
+     */
+    public function test_generate_xmldb_table(xmldb_generator $g) {
+        $table1 = $g->generate_xmldb_table('block_strathsurveys');
+        echo $table1->xmlOutput();
+    }
+
+    /**
+     * @depends test_constructor
+     * @param xmldb_generator $g
+     */
+    public function test_generate_xmldb_structure(xmldb_generator $g) {
+        $structure = $g->generate_xmldb_structure('local_hero');
+        echo $structure->xmlOutput();
+        $this->assertCount(1, $structure->getTables());
+    }
+
+    /**
+     * @depends test_constructor
+     */
+    public function test_infer_column_details($g) {
+        $paramint = $g->infer_column_details(PARAM_INT);
         $this->assertEquals(['type' => XMLDB_TYPE_INTEGER, 'precision' => 10], $paramint);
     }
 

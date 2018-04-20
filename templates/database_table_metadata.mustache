@@ -1,0 +1,4 @@
+$collection->add_database_table('{{table}}', [
+{{#columnslist}}    '{{name}}' => 'privacy:metadata:{{table}}:{{name}}'{{^last}},
+{{/last}}{{/columnslist}}
+], 'privacy:metadata:{{table}}');
