@@ -38,7 +38,7 @@ class tool_lazydev_persistent_generator_testcase extends \advanced_testcase {
     public function test_get_base_class_code(persistent_generator $gen) {
         $code1 = $gen->get_base_class_code('essay', 'tool_box');
         $ast = eval(substr($code1, 5));
-echo "\n\n$code1\n\n";
+
         $a = new class() extends \tool_box\local\model\generated\essay_base {};
         $this->assertNotNull($a);
 

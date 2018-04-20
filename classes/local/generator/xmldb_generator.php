@@ -2,6 +2,8 @@
 
 namespace tool_lazydev\local\generator;
 
+require_once($CFG->libdir . '/ddllib.php');
+
 use core\persistent;
 
 class xmldb_generator extends \tool_lazydev\local\generator\generator {

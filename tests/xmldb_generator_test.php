@@ -27,7 +27,9 @@ class tool_lazydev_xmldb_generator_testcase extends \advanced_testcase {
      */
     public function test_generate_xmldb_structure(xmldb_generator $g) {
         $structure = $g->generate_xmldb_structure('local_hero');
-        echo $structure->xmlOutput();
+        $xml = $structure->xmlOutput();
+        // Is path still required?
+        // $this->assertContains('PATH="local/hero/db"', $xml);
         $this->assertCount(1, $structure->getTables());
     }
 
