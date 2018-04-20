@@ -12,7 +12,7 @@ class yaml_model_reader implements model_reader {
     public function __construct(string $yaml) {
         global $CFG;
         $this->yaml = $yaml;
-        require_once($CFG->dirroot . '/admin/tool/lazydev/lib/Spyc.php');
+        require_once($CFG->dirroot . '/admin/tool/lazydev/lib/spyc/Spyc.php');
         $this->model = new model(spyc_load($yaml));
     }
 
