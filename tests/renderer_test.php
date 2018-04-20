@@ -9,7 +9,7 @@ class tool_lazydev_renderer_testcase extends \advanced_testcase {
         global $PAGE;
 
         $defs = array (
-            'block_strathsurveys' =>
+            'essay' =>
                 array (
                     'id' =>
                         array (
@@ -32,7 +32,7 @@ class tool_lazydev_renderer_testcase extends \advanced_testcase {
                 ),
         );
 
-        $renderable = new properties_definition($defs['block_strathsurveys']);
+        $renderable = new properties_definition($defs['essay']);
 
         $renderer = $PAGE->get_renderer('tool_lazydev');
 

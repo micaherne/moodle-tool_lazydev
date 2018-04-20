@@ -17,7 +17,7 @@ class tool_lazydev_xmldb_generator_testcase extends \advanced_testcase {
      * @param xmldb_generator $g
      */
     public function test_generate_xmldb_table(xmldb_generator $g) {
-        $table1 = $g->generate_xmldb_table('block_strathsurveys');
+        $table1 = $g->generate_xmldb_table('essay');
         echo $table1->xmlOutput();
     }
 

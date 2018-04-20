@@ -16,7 +16,7 @@ class tool_lazydev_persistent_generator_testcase extends \advanced_testcase {
      * @depends test_constructor
      */
     public function test_get_properties_definition(persistent_generator $gen) {
-        $props1 = $gen->get_properties_definition('block_strathsurveys');
+        $props1 = $gen->get_properties_definition('essay');
         $this->assertCount(2, $props1);
         $this->assertArrayHasKey('name', $props1);
         $this->assertArrayHasKey('datestart', $props1);
@@ -27,7 +27,7 @@ class tool_lazydev_persistent_generator_testcase extends \advanced_testcase {
      * @depends test_constructor
      */
     public function test_get_properties_definition_code(persistent_generator $gen) {
-        $code1 = $gen->get_properties_definition_code('block_strathsurveys');
+        $code1 = $gen->get_properties_definition_code('essay');
         $props1 = eval("return $code1;");
         $this->assertEquals(PARAM_TEXT, $props1['name']['type']);
     }
@@ -36,15 +36,15 @@ class tool_lazydev_persistent_generator_testcase extends \advanced_testcase {
      * @depends test_constructor
      */
     public function test_get_base_class_code(persistent_generator $gen) {
-        $code1 = $gen->get_base_class_code('block_strathsurveys', 'tool_box');
+        $code1 = $gen->get_base_class_code('essay', 'tool_box');
         $ast = eval(substr($code1, 5));
 
-        $a = new \tool_box\local\model\generated\block_strathsurveys_base();
+        $a = new class() extends \tool_box\local\model\generated\essay_base {};
         $this->assertNotNull($a);
 
         $reflect1 = new ReflectionClass($a);
 
-        $this->assertEquals('block_strathsurveys', $reflect1->getConstant('TABLE'));
+        $this->assertEquals('essay', $reflect1->getConstant('TABLE'));
 
         return $gen;
     }
@@ -53,15 +53,15 @@ class tool_lazydev_persistent_generator_testcase extends \advanced_testcase {
      * @depends test_get_base_class_code
      */
     public function test_get_main_class_code(persistent_generator $gen) {
-        $code1 = $gen->get_base_main_code('block_strathsurveys', 'tool_box');
+        $code1 = $gen->get_base_main_code('essay', 'tool_box');
         $ast = eval(substr($code1, 5));
 
-        $a = new \tool_box\local\model\block_strathsurveys();
+        $a = new \tool_box\local\model\essay();
         $this->assertNotNull($a);
 
         $reflect1 = new ReflectionClass($a);
 
-        $this->assertEquals('block_strathsurveys', $reflect1->getConstant('TABLE'));
+        $this->assertEquals('essay', $reflect1->getConstant('TABLE'));
     }
 
 }

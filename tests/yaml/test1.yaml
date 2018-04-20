@@ -1,7 +1,7 @@
 entities:
-  block_strathsurveys:
+  essay:
     persistent:
-      table_name: block_strathsurveys # example only, should be default
+      table_name: essay # example only, should be default
     fields:
       id:
       name:
@@ -10,7 +10,7 @@ entities:
         length: 255
         nullable: false
         sequence: false
-        comment: Survey name
+        comment: Essay name
         choices:
           - one
           - two
@@ -23,7 +23,7 @@ entities:
         default: 0
         sequence: false
         comment: Some test thing
-        privacy: The date the user started the survey.
+        privacy: The date the user started the essay.
   helper_component:
     classname: tool_lazydev\local\helper
     fields:
@@ -32,4 +32,4 @@ entities:
       lastname:
         moodle_type: PARAM_TEXT
       survey:
-        type: @block_strathsurveys[]
+        type: @essay[]

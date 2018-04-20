@@ -76,7 +76,7 @@ class persistent_generator extends generator {
         
         use core\persistent;
         
-        class $defaultclassname extends persistent {
+        abstract class $defaultclassname extends persistent {
         
             const TABLE = '$defaulttablename';
             

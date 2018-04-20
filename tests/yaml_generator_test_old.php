@@ -21,14 +21,14 @@ class tool_lazydev_yaml_generator_testcase extends \advanced_testcase {
      */
     public function test_get_properties_definitions(yaml_generator $y) {
         $props = $y->get_properties_definitions();
-        $this->assertArrayHasKey('block_strathsurveys', $props);
+        $this->assertArrayHasKey('essay', $props);
     }
 
     /**
      * @depends test_construct
      */
     public function test_get_database_table_metadata(yaml_generator $y) {
-        $code = $y->get_database_table_metadata('block_strathsurveys');
+        $code = $y->get_database_table_metadata('essay');
         print_r($code);
     }
 
@@ -36,7 +36,7 @@ class tool_lazydev_yaml_generator_testcase extends \advanced_testcase {
      * @depends test_construct
      */
     public function test_get_database_table_metadata_langstrings(yaml_generator $y) {
-        $code = $y->get_database_table_metadata_langstrings('block_strathsurveys');
+        $code = $y->get_database_table_metadata_langstrings('essay');
         print_r($code);
     }
 }

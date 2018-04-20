@@ -16,7 +16,7 @@ class tool_lazydev_privacy_generator_testcase extends \advanced_testcase {
      * @depends test_constructor
      */
     public function test_generate_database_table_metadata(privacy_generator $gen) {
-        echo $gen->generate_database_table_metadata('block_strathsurveys');
+        echo $gen->generate_database_table_metadata('essay');
     }
 
 }
