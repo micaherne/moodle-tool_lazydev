@@ -31,5 +31,5 @@ entities:
         moodle_type: PARAM_TEXT
       lastname:
         moodle_type: PARAM_TEXT
-      survey:
+      essays:
         type: @essay[]

@@ -89,7 +89,7 @@ class persistent_generator extends generator {
         return $result;
     }
 
-    public function get_base_main_code(string $entityname, string $component) {
+    public function get_main_class_code(string $entityname, string $component) {
         $defaultnamespace = $component . '\\local\\model';
         $defaultclassname = $entityname;
         $defaulttablename = $entityname;
