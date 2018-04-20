@@ -34,8 +34,8 @@ class tool_lazydev_xmldb_generator_testcase extends \advanced_testcase {
     /**
      * @depends test_constructor
      */
-    public function test_infer_column_details($g) {
-        $paramint = $g->infer_column_details(PARAM_INT);
+    public function test_infer_column_details_for_moodle_type($g) {
+        $paramint = $g->infer_column_details_for_moodle_type(PARAM_INT);
         $this->assertEquals(['type' => XMLDB_TYPE_INTEGER, 'precision' => 10], $paramint);
     }
 

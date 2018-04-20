@@ -110,7 +110,7 @@ class xmldb_generator extends \tool_lazydev\local\generator\generator {
         return $result;
     }
 
-    protected function infer_column_details_for_moodle_type(string $paramconstant) : array {
+    public function infer_column_details_for_moodle_type(string $paramconstant) : array {
         $result = [];
         switch ($paramconstant) {
             case PARAM_INT:
