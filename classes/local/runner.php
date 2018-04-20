@@ -12,11 +12,11 @@ class runner {
     protected $plugindir;
 
     public function __construct($plugin) {
-        $this->plugindir = \core_component::get_component_directory($this->plugin);
+        $this->plugindir = \core_component::get_component_directory($plugin);
         if (empty($this->plugindir)) {
-            throw new \coding_error("Unknown plugin {$plugin} - use frankenstyle name");
+            throw new \coding_exception("Unknown plugin {$plugin} - use frankenstyle name");
         }
-        $this->plugin = $this->plugin;
+        $this->plugin = $plugin;
     }
 
     public function generate_all() {
