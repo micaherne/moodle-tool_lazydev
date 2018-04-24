@@ -48,12 +48,15 @@ class xmldb_generator extends \tool_lazydev\local\generator\generator {
             $result->addField($field);
         }
 
+        $result->add_key('id_key', XMLDB_KEY_PRIMARY, ['id']);
+
         return $result;
     }
 
     public function generate_xmldb_structure(string $component) : \xmldb_structure {
         $entities = $this->model_reader->get_model()->get_persistent_entities();
         $result = new \xmldb_structure($component);
+        $result->setComment("Database tables for $component");
         foreach ($entities as $name => $def) {
             $result->addTable($this->generate_xmldb_table($name));
         }
